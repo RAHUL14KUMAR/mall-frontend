@@ -8,11 +8,7 @@ interface product{
     description:string
 }
 
-const seeDetails=()=>{
-  console.log("object")
-}
-
-function Cart({id,title,price,image,description}:product) {
+function Cart({id,title,price,image}:product) {
   return (
     <div className="w-[100%] h-[100%] flex flex-col z-1 m-[8px] overflow-hidden">
       <div className='border-4 border-slate-900 m-[8px] h-[400px] p-[5px] bg-white'>
@@ -28,7 +24,6 @@ function Cart({id,title,price,image,description}:product) {
             <button className='m-2 bg-slate-900 font-mono text-white p-2 rounded-sm'>
               AddToCart
             </button>
-            <button className='m-2 bg-cyan-700 hover:bg-cyan-800 font-mono text-white rounded-sm p-2' onClick={seeDetails}>Details</button>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ function App() {
     <div>
       <Header/>
       <Electrical/>
-      <ToyCart/>/
+      <ToyCart/>
       <FashionCart/>
     </div>   
   );

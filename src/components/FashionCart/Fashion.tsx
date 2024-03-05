@@ -57,7 +57,7 @@ function Cart() {
     
   return (
     <div>
-      <h1 className='text-white text-center bg-slate-900 mt-5 p-4 text-2xl font-mono'>FASHION STORES</h1>
+      <h1 className='text-white text-center bg-slate-900 mt-5 p-4 text-2xl font-mono'>Fashion Stores</h1>
 
     <Carousel swipeable={false} infinite={true}
       draggable={false} showDots={false} autoPlay={true}
