@@ -6,7 +6,7 @@ import {IoMdClose} from 'react-icons/io'
 
 function Navbar() {
   return (
-    <div className="bg-slate-900 w-screen h-fit p-2 flex justify-between items-center text-white">
+    <div className="bg-slate-900 w-screen h-fit p-2 flex justify-between items-center text-white fixed absolute">
       <div className="font-mono text-white text-2xl">
         <h1>MALL MANAGEMENT</h1>
       </div>
