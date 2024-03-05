@@ -25,7 +25,7 @@ const responsive = {
 };
 function Header() {
   return (
-    <div className='mt-[7%] mx-[2%]'>
+    <div className='mt-[2%] mx-[2%]'>
       <Carousel swipeable={false} infinite={true}
         draggable={false} showDots={true} autoPlay={true}
         responsive={responsive} autoPlaySpeed={3000}
@@ -35,7 +35,7 @@ function Header() {
         containerClass="carousel-container">
        {
         bannerData.map(data=>(
-            <img src={data.url} alt="banner"/>
+            <img src={data.url} alt="banner" key={data.id}/>
         ))
        }
     </Carousel>
