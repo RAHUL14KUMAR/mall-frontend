@@ -41,8 +41,8 @@ function Navbar() {
       </div>
 
       <div className="flex">
-        <button className="hover:bg-white hover:text-black p-2 m-2 font-mono text-xl rounded-lg cursor-pointer">Home</button>
-        <button className="hover:bg-white hover:text-black p-2 m-2 font-mono text-xl rounded-lg cursor-pointer">All</button>
+        <button className="hover:bg-white hover:text-black p-2 m-2 font-mono text-xl rounded-lg cursor-pointer" onClick={()=>navigate('/')}>Home</button>
+        <button className="hover:bg-white hover:text-black p-2 m-2 font-mono text-xl rounded-lg cursor-pointer" onClick={()=>navigate('/all')}>All</button>
         <button className="hover:bg-white hover:text-black p-2 m-2 font-mono text-xl rounded-lg cursor-pointer">Order-1</button>
         {role=='ADMIN'&&<button className="hover:bg-white hover:text-black p-2 m-2 font-mono text-xl rounded-lg cursor-pointer">Admin</button>}
       </div>
