@@ -1,9 +1,10 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Navbar from '../Navbar/Navbar'
 import { useNavigate } from 'react-router-dom'
 
 import {useCart} from '../../hooks/useCart'
 import './style.css'
+import { toast } from 'react-toastify'
 
 
 interface item{
@@ -18,13 +19,21 @@ function Details() {
     const {cartProducts,cartTotalAmount,handleRemoveProductFromCart}=useCart();
 
     const navigate=useNavigate()
+
+    useEffect(()=>{
+        if(cartProducts==null){
+            navigate('/');
+            toast.info('no products in your cart');
+            return
+        }
+    },[])
   return (
     <div>
         <Navbar/>
         <div className='grid grid-cols sm:geid-cols-1 md:grid-cols-2 gap-4 nav'>
             {cartProducts?.map((item:item)=>{
                 return(
-                    <div id={item.id}>
+                    <div key={item.id}>
                         <div className="flex p-4">
                             <div className='w-[7em] h-full'>
                                 <img src={item.image} alt={item.image}/>

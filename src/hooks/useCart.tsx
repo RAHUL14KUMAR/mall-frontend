@@ -1,6 +1,13 @@
 import {createContext,useCallback,useContext,useState} from 'react'
 import { useEffect } from 'react';
 
+type addressType={
+    locality:string,
+    landmark:string,
+    phone:string,
+    area:string
+}
+
 type cartProductType={
     id: string;
     title: string;
@@ -16,6 +23,9 @@ type CartContextType = {
     handleRemoveProductFromCart: (product: cartProductType) => void;
     handleClearCart: () => void;
     cartTotalAmount: number;
+
+    addAddress:(address:addressType)=>void;
+    addr:addressType | null
 }
 
 interface props{
@@ -28,6 +38,8 @@ export const CartContextProvider=(props:props)=>{
     const[cartTotalQty,setCartTotalQty]=useState(0);
     const[cartProducts,setCartProducts]=useState<cartProductType[]|null>(null);
     const[cartTotalAmount,setCartTotalAmount]=useState(0)
+
+    const [addr,setAddr]=useState<addressType | null>(null)
 
     useEffect(()=>{
         const cartItems:any=localStorage.getItem('eshopCartItems')
@@ -50,10 +62,10 @@ export const CartContextProvider=(props:props)=>{
                 return acc;
             },{
                 total:0,  
+                
             })
-
-            setCartTotalQty(cartTotalQty+1)
             setCartTotalAmount(total)
+            setCartTotalQty(cartTotalQty+1)
         }
     }
     getTotal();
@@ -73,6 +85,18 @@ export const CartContextProvider=(props:props)=>{
         })
     },[])
 
+    const addAddress=useCallback((address:addressType)=>{
+        setAddr((prev)=>{
+            let update;
+            if(prev){
+                update=address
+            }else{
+                update=address
+            }
+            return update
+        })
+    },[])
+
     const handleRemoveProductFromCart=useCallback((product:cartProductType)=>{
         if(cartProducts){
             const filter=cartProducts.filter((item)=>{
@@ -83,6 +107,7 @@ export const CartContextProvider=(props:props)=>{
         }
     },[cartProducts])
 
+ 
     const handleClearCart=useCallback(()=>{
         let updatedCart;
         setCartProducts(null)
@@ -90,7 +115,7 @@ export const CartContextProvider=(props:props)=>{
         localStorage.setItem("eshopCartItems",JSON.stringify(null))
     },[cartProducts])
 
-    const value={cartTotalQty,cartTotalAmount,cartProducts,handleAddProductToCart,handleRemoveProductFromCart,handleClearCart};
+    const value={cartTotalQty,cartTotalAmount,cartProducts,handleAddProductToCart,handleRemoveProductFromCart,handleClearCart,addAddress,addr}
 
     return <CartContext.Provider value={value} {...props}/>
 }

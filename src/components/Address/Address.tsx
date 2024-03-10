@@ -5,14 +5,25 @@ import { MdAreaChart, MdLandscape, MdLocalParking, MdPhone } from 'react-icons/m
 import Footer from '../Footer/Footer'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import { useCart } from '../../hooks/useCart'
 
 function Address() {
+
+    const {addAddress,addr}=useCart()
     const [locality,setLocality]=useState('')
     const [area,setArea]=useState('');
     const [landmark,setLandmark]=useState('')
     const [phone,setPhone]=useState('');
 
     const navigate=useNavigate();
+
+
+    const address={
+        locality,
+        landmark,
+        phone,
+        area
+    }
 
     const next=(e: React.MouseEvent<HTMLButtonElement>)=>{
         e.preventDefault();
@@ -21,9 +32,11 @@ function Address() {
             toast.info("add all the information")
             return;
         }else{
+            addAddress(address);
             navigate('/order');
         }
     }
+    console.log(addr)
 
   return (
     <div>
