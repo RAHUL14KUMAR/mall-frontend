@@ -1,4 +1,5 @@
 import React from 'react'
+import { useCart } from './../hooks/useCart';
 
 interface product{
     id:string,
@@ -8,7 +9,15 @@ interface product{
     description:string
 }
 
-function Cart({id,title,price,image}:product) {
+function Cart({id,title,price,image,description}:product) {
+    const {handleAddProductToCart}=useCart();
+    const item={
+      id,
+      title,
+      price,
+      image,
+      description
+    }
   return (
     <div className="w-[100%] h-[100%] flex flex-col z-1 m-[8px] overflow-hidden">
       <div className='border-4 border-slate-900 m-[8px] h-[400px] p-[5px] bg-white'>
@@ -21,7 +30,7 @@ function Cart({id,title,price,image}:product) {
           <p className='text-center'>₹ {price}</p>
 
           <div className='flex justify-center overflow-hidden'>
-            <button className='m-2 bg-slate-900 font-mono text-white p-2 rounded-sm'>
+            <button className='m-2 bg-slate-900 font-mono text-white p-2 rounded-sm' onClick={()=>handleAddProductToCart(item)}>
               AddToCart
             </button>
           </div>

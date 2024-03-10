@@ -3,6 +3,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css'; 
 import axios from 'axios';
 import Carting from '../Cart';
+import { useCart } from '../../hooks/useCart';
 
 let data = JSON.stringify({
     query: `query GetAllToys {
@@ -54,6 +55,7 @@ interface item{
 function ToyCart() {
 
     const[item,setItem]=useState([]);
+    const {handleAddProductToCart}=useCart();
 
     useEffect(()=>{
          getAll()

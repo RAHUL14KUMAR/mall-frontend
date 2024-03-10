@@ -3,13 +3,18 @@ import { MdOutlineDensityMedium } from "react-icons/md";
 import { CiLogin } from "react-icons/ci";
 import {IoMdClose} from 'react-icons/io'
 import {useNavigate} from 'react-router-dom'
+import { useCart } from '../../hooks/useCart';
 
 function Navbar() { 
+  const {cartTotalQty} = useCart();
 
   const navigate = useNavigate();
 
   const [Log,setLog]=useState('');
-  const [role,setRole]=useState('')
+  const [role,setRole]=useState('');
+  const [length,setLength]=useState(0);
+
+  
 
   useEffect(()=>{
     const a = JSON.parse(localStorage.getItem("user") as string);
@@ -24,6 +29,7 @@ function Navbar() {
     if(a){
       setRole(a.role)
     }
+   
   },[Log])
 
   const loginRoute = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -43,7 +49,7 @@ function Navbar() {
       <div className="flex">
         <button className="hover:bg-white hover:text-black p-2 m-2 font-mono text-xl rounded-lg cursor-pointer" onClick={()=>navigate('/')}>Home</button>
         <button className="hover:bg-white hover:text-black p-2 m-2 font-mono text-xl rounded-lg cursor-pointer" onClick={()=>navigate('/all')}>All</button>
-        <button className="hover:bg-white hover:text-black p-2 m-2 font-mono text-xl rounded-lg cursor-pointer">Order-1</button>
+        <button className="hover:bg-white hover:text-black p-2 m-2 font-mono text-xl rounded-lg cursor-pointer">Order-{cartTotalQty}</button>
         {role=='ADMIN'&&<button className="hover:bg-white hover:text-black p-2 m-2 font-mono text-xl rounded-lg cursor-pointer">Admin</button>}
       </div>
 
