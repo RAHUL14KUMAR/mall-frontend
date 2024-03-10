@@ -1,0 +1,41 @@
+.position{
+    position:fixed;
+    right:0.1em;
+    bottom:0em;
+    background-color: white;
+}
+.nav{
+    margin-top:7em;
+}
+@media only screen and (min-width:350px ) and (max-width:413px){
+    .position{
+        position:relative;
+        margin-left:6.5em;
+    }
+}
+@media only screen and (min-width:414px ) and (max-width:500px){
+    .position{
+        position:relative;
+        margin-left:8em;
+    }
+}
+@media only screen and (width:768px ) {
+    .position{
+        position:relative;
+        margin-left:31em;
+    }
+}
+@media only screen and (width:820px ) {
+    .position{
+        position:relative;
+        margin-left:33em;
+    }
+}
+
+@media only screen and (width:912px ) {
+    .position{
+        position:relative;
+        margin-left:40em;
+        
+    }
+}
