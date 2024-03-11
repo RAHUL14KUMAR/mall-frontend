@@ -3,6 +3,8 @@ import {useCart} from '../../hooks/useCart'
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import './style.css'
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 interface USER{
     name:string,
@@ -25,6 +27,7 @@ interface item{
 }
 
 function Preview() {
+    const navigate=useNavigate();
     const {addr,cartProducts,cartTotalAmount}=useCart();
     let length=0;
     const a=JSON.parse(localStorage.getItem("Address") as string);
@@ -33,14 +36,34 @@ function Preview() {
     if(cartProducts){
         length=cartProducts.length;
     }
+
+    function  Pay(e:React.MouseEvent<HTMLButtonElement>){
+        e.preventDefault();
+        localStorage.removeItem('eshopCartItems');
+        localStorage.removeItem('Address');
+        toast.success('order placed successfully');
+        navigate('/');
+        return;    
+    }
+
+    const online=async(e:React.MouseEvent<HTMLButtonElement>)=>{
+        e.preventDefault();
+        localStorage.removeItem('eshopCartItems');
+        localStorage.removeItem('Address');
+        navigate('/');
+        return;
+    }
+
+    
   return (
     <div>
         <Navbar/>
-        <div className="flex flex-col sm:flex-col md:flex-row border-4 border-slate-900 p-3 m-1 mt-[6em] items-center justify-between">
-            <div className='w-[12em] h-[10em] border-4 border-slate-900 overflow-hidden'>
+        <div className='flex flex-col justify-center items-center mt-2'>
+        <div className="grid grid-cols sm:grid-cols-1 lg:grid-cols-5 gap-4 p-4 m-2 mt-[5em] md:border-4 md:border-slate-900">
+            <div className='w-[12em] h-[10em] border-4 border-slate-900 overflow-hidden p-2'>
                 <img src='https://static.vecteezy.com/system/resources/thumbnails/002/934/620/small_2x/salary-payment-isometric-color-illustration-accounting-and-audit-saving-money-revenue-increase-banking-annual-bonus-payout-payday-people-receiving-wage-3d-concept-isolated-on-white-vector.jpg'/>
             </div>
-            <div className='mx-2'>
+            <div className=''>
                 <div className='font-mono font-bold text-black mx-1'>
                 <h1 className='text-lg underline'>USER DETAILS</h1>
                     <p>{user.name}</p>
@@ -50,7 +73,7 @@ function Preview() {
                 </div>
             </div>
 
-            <div className='mx-2'>
+            <div className=''>
                 <div className='font-mono font-bold text-black mx-1'>
                     <h1 className='text-lg underline'>ADDRESS DETAILS</h1>
                     <p>{a.locality}</p>
@@ -60,7 +83,7 @@ function Preview() {
                 </div>
             </div>
 
-            <div className=' flex flex-col mx-2'>
+            <div className=' flex flex-col'>
                 <div className='font-mono font-bold text-black mx-1'>
                     <h1 className='text-lg underline'>TOTAL AMOUNT</h1>
                     <p>{cartTotalAmount} RS</p>
@@ -68,16 +91,17 @@ function Preview() {
                 </div>
             </div>
 
-            <div className='mx-2'>
+            <div className=''>
                 <div className='font-mono font-bold text-black mx-1'>
                     <h1 className='text-lg underline'>PAYMENT MODES</h1>
 
-                    <button className='bg-slate-800 hover:bg-slate-950 text-white font-mono text-lg p-2 mt-2 w-[10em]'>cash on delivery</button> 
+                    <button className='bg-slate-800 hover:bg-slate-950 text-white font-mono text-lg p-2 mt-2 w-[10em]' onClick={(e)=>Pay(e)}>cash on delivery</button> 
                     <br/>
 
-                    <button className='bg-slate-800 hover:bg-slate-950 text-white font-mono text-lg p-2 mt-2 w-[10em]'>pay online</button> 
+                    <button className='bg-slate-800 hover:bg-slate-950 text-white font-mono text-lg p-2 mt-2 w-[10em]' onClick={(e)=>online(e)}>pay online</button> 
                 </div>
             </div>
+        </div>
         </div>
 
         <div>
