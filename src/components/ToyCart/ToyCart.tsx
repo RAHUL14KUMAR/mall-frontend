@@ -76,7 +76,7 @@ function ToyCart() {
         keyBoardControl={true}
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
-        containerClass="carousel-container">
+        containerClass="carousel-container" className='mr-2'>
         {
             item.map((item: item)=>{
                 return(

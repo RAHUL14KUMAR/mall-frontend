@@ -25,7 +25,7 @@ const responsive = {
 };
 function Header() {
   return (
-    <div className='mt-[6em] mx-[2%]'>
+    <div className='mt-[5em] md:mt-[6em] mx-[2%]'>
       <Carousel swipeable={false} infinite={true}
         draggable={false} showDots={true} autoPlay={true}
         responsive={responsive} autoPlaySpeed={3000}
