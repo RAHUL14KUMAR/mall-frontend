@@ -1,6 +1,5 @@
 import React,{useEffect, useState} from 'react'
 import { MdOutlineDensityMedium } from "react-icons/md";
-import { CiLogin } from "react-icons/ci";
 import {IoMdClose} from 'react-icons/io'
 import {useNavigate} from 'react-router-dom'
 import { useCart } from '../../hooks/useCart';
@@ -13,6 +12,7 @@ function Navbar() {
 
   const [Log,setLog]=useState('');
   const [role,setRole]=useState('');
+  const [toggle,setToogle]=useState(false);
 
   
 
@@ -46,7 +46,7 @@ function Navbar() {
         <h1>MALL MANAGEMENT</h1>
       </div>
 
-      <div className="flex">
+      <div className="flex hidden lg:inline-block">
         <button className="hover:bg-white hover:text-black p-2 m-2 font-mono text-xl rounded-lg cursor-pointer" onClick={()=>navigate('/')}>Home</button>
         <button className="hover:bg-white hover:text-black p-2 m-2 font-mono text-xl rounded-lg cursor-pointer" onClick={()=>navigate('/all')}>All</button>
         <button className="hover:bg-white hover:text-black p-2 m-2 font-mono text-xl rounded-lg cursor-pointer" onClick={()=>navigate('/details')}>MyOrder</button>
@@ -55,6 +55,36 @@ function Navbar() {
 
         <div className="flex">
           <button className="hover:bg-white hover:text-black p-2 font-mono text-xl mr-3 rounded-lg" onClick={(e: React.MouseEvent<HTMLButtonElement>) => loginRoute(e)}>{Log==''?<div>Login</div>:<div onClick={signOut}>{Log}</div>}</button>
+
+          <button className="hover:bg-white hover:text-black p-2 font-mono text-xl mr-3 sm:inline-block lg:hidden md:px-6 rounded-lg"onClick={()=>setToogle((prev)=>!prev)}><MdOutlineDensityMedium className='text-white'/></button>
+
+          {
+            toggle&&
+            <div className='modal bg-slate-800'>
+              <div>
+                <button className='rounded-lg p-2 text-lg font-medium text-white m-4'>
+                  <IoMdClose onClick={()=>setToogle((prev)=>!prev)} className='icon'/>
+                </button>
+              </div>
+              <div>
+                <button className="rounded-lg p-2 text-lg font-medium hover:bg-white hover:text-black text-white m-4" onClick={()=>navigate('/')}>Home</button>
+              </div> 
+
+              <div>
+                <button className="rounded-lg p-2 text-lg font-medium hover:bg-white hover:text-black text-white m-4" onClick={()=>navigate('/all')}>All</button>
+              </div>
+
+              <div>
+                <button className="rounded-lg p-2 text-lg font-medium hover:bg-white hover:text-black text-white m-4" onClick={()=>navigate('/order')}>MyOrder</button>
+              </div>
+
+              <div>
+                <button className="rounded-lg p-2 text-lg font-medium hover:bg-white hover:text-black text-white m-4" onClick={()=>navigate('/admin')}>Admin</button>
+              </div>
+
+
+            </div>
+          }
         </div>
   </div>
   )

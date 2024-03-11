@@ -3,3 +3,14 @@
     z-index:100000;
     top:0;
 }
+.modal{
+    position : fixed;
+    top:0;
+    right:0;
+    overflow: hidden;
+    cursor:pointer;
+    width:18em;
+    display: flex;
+    flex-direction: column;
+    z-index: index 1;
+}
