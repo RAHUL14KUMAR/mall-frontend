@@ -27,7 +27,7 @@ function Register() {
       let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://localhost:4000/graphql',
+        url: process.env.REACT_APP_API_URL,
         headers: { 
           'Content-Type': 'application/json'
         },

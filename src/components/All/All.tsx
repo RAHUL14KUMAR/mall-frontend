@@ -21,7 +21,7 @@ let Productdata = JSON.stringify({
 let Productconfig = {
   method: 'post',
   maxBodyLength: Infinity,
-  url: 'http://localhost:4000/graphql',
+  url: process.env.REACT_APP_API_URL,
   headers: { 
     'Content-Type': 'application/json'
   },
@@ -44,7 +44,7 @@ let Fashiondata = JSON.stringify({
 let Fashionconfig = {
   method: 'post',
   maxBodyLength: Infinity,
-  url: 'http://localhost:4000/graphql',
+  url: process.env.REACT_APP_API_URL,
   headers: { 
     'Content-Type': 'application/json'
   },
@@ -67,7 +67,7 @@ let Toydata = JSON.stringify({
 let Toyconfig = {
   method: 'post',
   maxBodyLength: Infinity,
-  url: 'http://localhost:4000/graphql',
+  url: process.env.REACT_APP_API_URL,
   headers: { 
     'Content-Type': 'application/json'
   },
