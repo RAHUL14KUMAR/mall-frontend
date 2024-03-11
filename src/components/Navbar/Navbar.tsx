@@ -75,7 +75,7 @@ function Navbar() {
               </div>
 
               <div>
-                <button className="rounded-lg p-2 text-lg font-medium hover:bg-white hover:text-black text-white m-4" onClick={()=>navigate('/order')}>MyOrder</button>
+                <button className="rounded-lg p-2 text-lg font-medium hover:bg-white hover:text-black text-white m-4" onClick={()=>navigate('/details')}>MyOrder</button>
               </div>
 
               <div>
