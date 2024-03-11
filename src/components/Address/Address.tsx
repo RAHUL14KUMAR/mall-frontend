@@ -33,10 +33,10 @@ function Address() {
             return;
         }else{
             addAddress(address);
+            localStorage.setItem("Address",JSON.stringify(address))
             navigate('/order');
         }
     }
-    console.log(addr)
 
   return (
     <div>

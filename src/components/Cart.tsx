@@ -1,12 +1,12 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useCart } from './../hooks/useCart';
 
 interface product{
-    id:string,
-    title:string,
-    price:number,
-    image:string,
-    description:string
+  id:string,
+  title:string,
+  price:number,
+  image:string,
+  description:string
 }
 
 function Cart({id,title,price,image,description}:product) {
@@ -18,6 +18,11 @@ function Cart({id,title,price,image,description}:product) {
       image,
       description
     }
+
+    // useEffect(()=>{
+    //   const a=JSON.parse(localStorage.getItem('eshopCartItems') as string);
+
+    // },[item])
   return (
     <div className="w-[100%] h-[100%] flex flex-col z-1 m-[8px] overflow-hidden">
       <div className='border-4 border-slate-900 m-[8px] h-[400px] p-[5px] bg-white'>
