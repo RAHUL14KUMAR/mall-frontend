@@ -35,7 +35,7 @@ function Header() {
         containerClass="carousel-container">
        {
         bannerData.map(data=>(
-            <img src={data.url} alt="banner" key={data.id}/>
+          <div key={data.id}> <img src={data.url} alt="banner" key={data.id} className='h-40  md:h-full'/></div>    
         ))
        }
     </Carousel>
