@@ -21,12 +21,12 @@ function Details() {
     const navigate=useNavigate()
 
     useEffect(()=>{
-        if(cartProducts==null){
+        if(cartProducts==null || cartProducts.length==0){
             navigate('/');
             toast.info('no products in your cart');
             return
         }
-    },[])
+    },[handleRemoveProductFromCart])
   return (
     <div>
         <Navbar/>
@@ -34,7 +34,7 @@ function Details() {
             {cartProducts?.map((item:item)=>{
                 return(
                     <div key={item.id}>
-                        <div className="flex p-4">
+                        <div className="flex sm:flex-col md:flex-row p-4">
                             <div className='w-[7em] h-full'>
                                 <img src={item.image} alt={item.image}/>
                             </div>
@@ -46,8 +46,7 @@ function Details() {
 
                                 
                                 <p className='font-mono text-black tracking-widest m-2'>{item.description}</p>
-
-                                <button className=' text-center font-mono text-white bg-slate-800 hover:bg-slate-900 cursor-pointer p-4 rounded-sm m-2' >Remove</button>
+                                <button className=' text-center font-mono text-white bg-slate-800 hover:bg-slate-900 cursor-pointer p-4 rounded-sm m-2' onClick={() => handleRemoveProductFromCart(item)}>Remove</button>
                             </div>
                         </div>
                         
